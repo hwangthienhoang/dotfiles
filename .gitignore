@@ -33,6 +33,8 @@
 !.config/kitty/**
 !.config/mpv/
 !.config/mpv/**
+!.config/nvim/
+!.config/nvim/**
 !.config/qt5ct/
 !.config/qt5ct/**
 !.config/swaylock/
