@@ -1,0 +1,4 @@
+## yadm ls-files --others --exclude-standard  
+[user]
+	name = hwangthienhoang
+	email = hwangthienhoang@gmail.com
