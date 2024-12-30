@@ -14,6 +14,7 @@
 !.config/bat/**
 !.config/btop/
 !.config/btop/**
+.config/btop/btop.log
 !.config/eza/
 !.config/eza/**
 !.config/fish/

@@ -114,8 +114,8 @@ _fzf_comprun() {
 eval "$(zoxide init zsh)"
 # ----- Bat (better cat) -----
 export BAT_THEME=tokyonight_night
-# ----- version manager: nodejs, ...
-. /opt/asdf-vm/asdf.sh
+# bat cache --build
+
 # ---- ssh-agent( using gnome-keyring now, should not start here) 
 # unset SSH_AGENT_PID
 # if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
@@ -136,3 +136,5 @@ for key in ~/.ssh/id_*; do
     fi
 done
 
+# ----- version manager: nodejs, ...
+. /opt/asdf-vm/asdf.sh
