@@ -16,6 +16,8 @@
 !.config/btop/**
 .config/btop/btop.log
 !.config/eza/
+!.config/fcitx5/
+!.config/fcitx5/**
 !.config/eza/**
 !.config/fish/
 !.config/fish/**
@@ -50,3 +52,7 @@
 !.config/zed/**
 !.config/zshrc.d/
 !.config/zshrc.d/**
+
+## Others
+!.issues/
+!.issues/**
