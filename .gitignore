@@ -56,3 +56,5 @@
 ## Others
 !.issues/
 !.issues/**
+!.zsh/
+!.zsh/**

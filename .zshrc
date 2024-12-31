@@ -15,8 +15,9 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
-zinit ice depth=1
-zinit light jeffreytse/zsh-vi-mode
+# zinit ice depth=1 ; zinit light jeffreytse/zsh-vi-mode
+zinit light zsh-users/zsh-history-substring-search
+# zinit ice wait atload'_history_substring_search_config'
 
 # Add in snippets
 zinit snippet OMZL::git.zsh
@@ -42,8 +43,12 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 
 # Keybindings
-bindkey -v
+bindkey -e
 # ZVM_VI_EDITOR=nvim
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+bindkey -M emacs '^K' history-substring-search-up
+bindkey -M emacs '^J' history-substring-search-down
 # End of lines configured by zsh-newuser-install
 
 # The following lines were added by compinstall
@@ -66,11 +71,10 @@ alias ls='eza --color=always --icons=always --long --show-symlinks'
 alias ll='ls -a'
 alias la='ls -a'
 alias tree='ls --tree --level=2'
+alias hostname='uname -n'
 
-
-# oh-my-posh theme
-# eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/themes/catppuccin_macchiato.omp.toml)"
-
+# -----------themes
+source ~/.zsh/themes/headline.zsh-theme
 # Shell integrations
 # ---- FZF -----
 eval "$(fzf --zsh)"
