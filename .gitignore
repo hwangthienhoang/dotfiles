@@ -16,9 +16,11 @@
 !.config/btop/**
 .config/btop/btop.log
 !.config/eza/
+!.config/eza/**
+!.config/fastfetch/
+!.config/fastfetch/**
 !.config/fcitx5/
 !.config/fcitx5/**
-!.config/eza/**
 !.config/fish/
 !.config/fish/**
 !.config/fontconfig/
@@ -27,6 +29,8 @@
 !.config/foot/**
 !.config/fuzzel/
 !.config/fuzzel/**
+!.config/ghostty/
+!.config/ghostty/**
 !.config/git/
 !.config/git/**
 !.config/gtk-**
@@ -54,7 +58,7 @@
 !.config/zshrc.d/**
 
 ## Others
-!.issues/
-!.issues/**
+!.docs/
+!.docs/**
 !.zsh/
 !.zsh/**

@@ -281,7 +281,7 @@ HL_SEP=(
 )
 HL_LAYOUT_STYLE="%{$light_black%}"
 HL_LAYOUT_TEMPLATE=(
-  _PRE    "│${IS_SSH+ %{$reset$faint%\}ssh}" 
+  _PRE    "└${IS_SSH+ %{$reset$faint%\}ssh}" 
   USER    ' ... (ﾎｱﾝ)' # ホアン
   HOST    " %{$reset$faint%}ﾃﾞ%{$reset$HL_LAYOUT_STYLE%} ..."  # consider 'at' or 'ﾃﾞ'
   VENV    " %{$reset$faint%}ﾄ%{$reset$HL_LAYOUT_STYLE%} ..."  # consider 'with' or 'ﾄ'
@@ -289,7 +289,7 @@ HL_LAYOUT_TEMPLATE=(
   _SPACER ''
   BRANCH  " %{$reset$faint%}ﾉ%{$reset$HL_LAYOUT_STYLE%} ..."  # consider 'on' or 'ﾉ'
   STATUS  ' ...'
-  _POST   ' │'
+  _POST   ' '
 )
 HL_LAYOUT_FIRST=(
   HOST    ' ...'
@@ -299,8 +299,8 @@ HL_LAYOUT_FIRST=(
   BRANCH  ' ...'
 )
 HL_CONTENT_TEMPLATE=(
-  USER   "%{$bold$red%} ..."
-  HOST   "%{$bold$yellow%} ..."
+  USER   "%{$bold$red%} ..."
+  HOST   "%{$bold$yellow%} ..."
   VENV   "%{$bold$green%} ..."
   PATH   "%{$bold$blue%} ..."
   BRANCH "%{$bold$cyan%} ..."

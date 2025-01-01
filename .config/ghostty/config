@@ -1,0 +1,80 @@
+
+# By default Reload config with shft + cmd + , 
+
+theme = tokyonight
+# #background = #000000
+background-opacity = 0.9
+background-blur-radius = 20
+
+cursor-style = bar
+cursor-style-blink = true
+cursor-invert-fg-bg = true
+cursor-click-to-move = true
+
+font-family =      JetBrainsMono Nerd Font
+font-family-bold   =      JetBrainsMono NF Bold
+font-family-italic=      JetBrainsMono NF Italic
+font-family-bold-italic = JetBrainsMono NF Medium Italic
+font-size   =      11
+#modify_font cell_height 118%
+#
+
+macos-titlebar-style = hidden
+gtk-titlebar         = false
+gtk-tabs-location    = hidden
+mouse-hide-while-typing = true
+title=""
+
+confirm-close-surface = false
+window-theme     = auto
+window-decoration = true
+window-padding-x = 10
+window-padding-y = 10
+window-padding-balance = true
+
+auto-update = check
+auto-update-channel = stable
+
+# extras
+# shell-integration-features = no-cursor 
+copy-on-select = clipboard
+shell-integration = zsh
+# Custom Keybinds & Config (super represents cmd key on mac)
+# For Simple Keybinds
+keybind = ctrl+i=inspector:toggle
+
+# Copy and Paste
+keybind = super+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
+
+# Similar Tmux but with Ghostty
+# (ctrl b for tmux -> cmb b for ghostty)
+keybind = ctrl+b>r=reload_config
+keybind = ctrl+b>x=close_surface
+# this only works if you have `macos-titlebar-style = tabs or native or transparent`
+# else it behaves like new window
+keybind = ctrl+b>t=toggle_tab_overview
+keybind = ctrl+b>c=new_tab 
+keybind = ctrl+b>n=new_window
+
+# tab nav
+keybind = ctrl+b>1=goto_tab:1
+keybind = ctrl+b>2=goto_tab:2
+keybind = ctrl+b>3=goto_tab:3
+keybind = ctrl+b>4=goto_tab:4
+keybind = ctrl+b>5=goto_tab:5
+keybind = ctrl+b>6=goto_tab:6
+keybind = ctrl+b>7=goto_tab:7
+keybind = ctrl+b>8=goto_tab:8
+keybind = ctrl+b>9=goto_tab:9
+
+# splitting
+keybind = ctrl+b>\=new_split:right
+keybind = ctrl+b>-=new_split:down
+keybind = ctrl+b>e=equalize_splits
+
+# split nav (setting this to control will not work if tmux already uses it)
+keybind = ctrl+b>h=goto_split:left
+keybind = ctrl+b>j=goto_split:bottom
+keybind = ctrl+b>k=goto_split:top
+keybind = ctrl+b>l=goto_split:right

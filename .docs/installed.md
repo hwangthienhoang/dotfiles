@@ -9,5 +9,6 @@ hyprpm add https://github.com/hyprwm/hyprland-plugins.git
 hyprpm enable hyprexpo
 hyprpm add https://github.com/shezdy/hyprsplit
 hyprpm enable hyprsplit
+yay -S fastfetch
 
 ```
