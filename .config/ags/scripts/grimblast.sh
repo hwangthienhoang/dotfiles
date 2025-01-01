@@ -17,6 +17,17 @@
 ## This tool is based on grimshot, with swaymsg commands replaced by their
 ## hyprctl equivalents.
 ## https://github.com/swaywm/sway/blob/master/contrib/grimshot
+
+# Check whether another instance is running
+
+grimblastInstanceCheck="${XDG_RUNTIME_DIR:-$XDG_CACHE_DIR:-$HOME/.cache}/grimblast.lock"
+if [ -e "$grimblastInstanceCheck" ]; then
+  exit 2
+else
+  touch "$grimblastInstanceCheck"
+fi
+trap "rm -f '$grimblastInstanceCheck'" EXIT
+
 getTargetDirectory() {
   test -f "${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs" &&
     . "${XDG_CONFIG_HOME:-$HOME/.config}/user-dirs.dirs"
@@ -133,13 +144,6 @@ notifyError() {
   fi
 }
 
-resetFade() {
-  if [[ -n $FADE && -n $FADEOUT ]]; then
-    hyprctl keyword animation "$FADE" >/dev/null
-    hyprctl keyword animation "$FADEOUT" >/dev/null
-  fi
-}
-
 killHyprpicker() {
   if [ ! $HYPRPICKER_PID -eq -1 ]; then
     kill $HYPRPICKER_PID
@@ -173,7 +177,6 @@ takeScreenshot() {
     grim ${CURSOR:+-c} ${SCALE:+-s "$SCALE"} "$FILE" || die "Unable to invoke grim"
   else
     grim ${CURSOR:+-c} ${SCALE:+-s "$SCALE"} -g "$GEOM" "$FILE" || die "Unable to invoke grim"
-    resetFade
   fi
 }
 
@@ -215,22 +218,19 @@ elif [ "$SUBJECT" = "area" ]; then
     HYPRPICKER_PID=$!
   fi
 
-  # get fade & fadeOut animation and unset it
+  # disable animation for layer namespace "selection" (slurp)
   # this removes the black border seen around screenshots
-  FADE="$(hyprctl -j animations | jq -jr '.[0][] | select(.name == "fade") | .name, ",", (if .enabled == true then "1" else "0" end), ",", (.speed|floor), ",", .bezier')"
-  FADEOUT="$(hyprctl -j animations | jq -jr '.[0][] | select(.name == "fadeOut") | .name, ",", (if .enabled == true then "1" else "0" end), ",", (.speed|floor), ",", .bezier')"
-  hyprctl keyword animation 'fade,0,1,default' >/dev/null
-  hyprctl keyword animation 'fadeOut,0,1,default' >/dev/null
+  hyprctl keyword layerrule "noanim,selection" >/dev/null
 
-  WORKSPACES="$(hyprctl monitors -j | jq -r 'map(.activeWorkspace.id)')"
-  WINDOWS="$(hyprctl clients -j | jq -r --argjson workspaces "$WORKSPACES" 'map(select([.workspace.id] | inside($workspaces)))')"
+  FULLSCREEN_WORKSPACES="$(hyprctl workspaces -j | jq -r 'map(select(.hasfullscreen) | .id)')"
+  WORKSPACES="$(hyprctl monitors -j | jq -r '[(foreach .[] as $monitor (0; if $monitor.specialWorkspace.name == "" then $monitor.activeWorkspace else $monitor.specialWorkspace end)).id]')"
+  WINDOWS="$(hyprctl clients -j | jq -r --argjson workspaces "$WORKSPACES" --argjson fullscreenWorkspaces "$FULLSCREEN_WORKSPACES" 'map((select(([.workspace.id] | inside($workspaces)) and ([.workspace.id] | inside($fullscreenWorkspaces) | not) or .fullscreen > 0)))')"
   # shellcheck disable=2086 # if we don't split, spaces mess up slurp
   GEOM=$(echo "$WINDOWS" | jq -r '.[] | "\(.at[0]),\(.at[1]) \(.size[0])x\(.size[1])"' | slurp $SLURP_ARGS)
 
   # Check if user exited slurp without selecting the area
   if [ -z "$GEOM" ]; then
     killHyprpicker
-    resetFade
     exit 1
   fi
   WHAT="Area"
