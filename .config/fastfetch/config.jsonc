@@ -5,128 +5,159 @@
     "type": "kitty",
     "height": 35,
     "padding": {
-      "top": 1
-    }
+      "top": 0,
+    },
   },
   "display": {
-    "separator": " ➜ "
+    "separator": " ➜ ",
   },
   "modules": [
     {
       "type": "custom",
-      "format": "  \u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m "
+      "format": "┌──────────────────────────────────────────────────────────────────────────────┐", // `\u001b` is `\033`, or `\e`
+      "outputColor": "35", // Magenta
     },
     {
       "type": "custom",
-      "format": ""
+      "format": "",
     },
     {
       "type": "custom",
-      "format": "    未来に思いを巡らせると、歩みはより確かなものになるわ。"
+      "format": "    未来に思いを巡らせると、歩みはより確かなものになるわ。",
+      "outputColor": "35", // Magenta
     },
     {
       "type": "custom",
-      "format": ""
+      "format": "",
     },
     {
       "type": "os",
       "key": "  ┌  OS      ",
-      "keyColor": "33"  // Yellow
+      "keyColor": "33", // Yellow
     },
     {
       "type": "kernel",
       "key": "  ├  Kernel  ",
-      "keyColor": "97"  // Light White
+      "keyColor": "97", // Light White
     },
     {
       "type": "packages",
       "key": "  ├ 󰏗 Packages",
-      "keyColor": "32"  // Green
+      "keyColor": "32", // Green
     },
     {
       "type": "display",
       "key": "  ├ 󱍜 Display ",
-      "keyColor": "35"  // Magenta
+      "keyColor": "35", // Magenta
     },
     {
       "type": "wm",
       "key": "  ├  WM      ",
-      "keyColor": "94"  // Light Blue
+      "keyColor": "94", // Light Blue
+    },
+    {
+      "type": "shell",
+      "key": "  ├  Shell   ",
+      "keyColor": "green",
     },
     {
       "type": "terminal",
       "key": "  └  Terminal",
-      "keyColor": "99"  // 
+      "keyColor": "99", //
     },
     "break",
     {
       "type": "title",
       "key": "  ┌  User    ",
-      "keyColor": "31"  // 
+      "keyColor": "31", //
     },
     {
       "type": "command",
       "key": "  ├ 󱦟 OS Age  ",
-      "keyColor": "32",  // Red
-      "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days"
+      "keyColor": "32", // Red
+      "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days",
     },
     {
       "type": "uptime",
       "key": "  ├  Uptime  ",
-      "keyColor": "36"  // Cyan
+      "keyColor": "36", // Cyan
     },
     {
       "type": "custom",
       "format": "  ├ 󰊤 GitHub   ➜ hwangthienhoang",
-      "keyColor": "\u001b[38;5;75m"  // Light Blue
+      "keyColor": "\u001b[38;5;75m", // Light Blue
     },
     {
       "type": "media",
       "key": "  └ 󰝚 Music   ",
-      "keyColor": "35"  // Magenta
+      "keyColor": "94", // Magenta
     },
     "break",
     {
       "type": "custom",
-      "format": "Monitor: "
+      "format": "  モニター ",
     },
     {
       "type": "cpu",
       "format": "{1}",
       "key": "  ┌   CPU    ",
-      "keyColor": "92"  // Light Green
+      "keyColor": "92", // Light Green
     },
     {
       "type": "gpu",
       "format": "{2}",
       "key": "  ├   GPU    ",
-      "keyColor": "93"  // Light Yellow
+      "keyColor": "93", // Light Yellow
     },
     {
       "type": "gpu",
       "format": "{3}",
       "key": "  ├   GPU    ",
-      "keyColor": "96"  // Light Cyan
+      "keyColor": "96", // Light Cyan
     },
     {
       "type": "memory",
       "key": "  ├   Memory ",
-      "keyColor": "95"  // Light Magenta
+      "keyColor": "95", // Light Magenta
+    },
+    {
+      "type": "localip",
+      "key": "  ├ 󰩟  IP     ",
+      "keyColor": "94",
+      "compact": true,
+      "showAllIps": true,
+      "showMac": true,
     },
     {
       "type": "battery",
       "key": "  └   Battery",
-      "keyColor": "33"  // Yellow
+      "keyColor": "33", // Yellow
+      "temp": {
+        "green": 30,
+        "yellow": 70,
+      },
     },
     {
       "type": "custom",
-      "format": ""
+      "format": "",
     },
     "break",
     {
       "type": "custom",
-      "format": "  \u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m "
+      "format": "└──────────────────────────────────────────────────────────────────────────────┘", // `\u001b` is `\033`, or `\e`
     },
-    "break"
-  ]
+    {
+      "type": "custom",
+      "format": "                              \u001b[90m  \u001b[31m  \u001b[32m  \u001b[33m  \u001b[34m  \u001b[35m  \u001b[36m  \u001b[37m ",
+    },
+    "break",
+    // {
+    //   "type": "colors",
+    //   "paddingLeft": 34,
+    //   "symbol": "triangle",
+    //   "block": {
+    //     "width": 10,
+    //   },
+    // },
+  ],
 }
