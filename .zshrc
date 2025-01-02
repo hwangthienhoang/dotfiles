@@ -72,7 +72,15 @@ alias ll='ls -a'
 alias la='ls -a'
 alias tree='ls --tree --level=2'
 alias hostname='uname -n'
-
+# use `y` instead of yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 # -----------themes
 source ~/.zsh/themes/headline.zsh-theme
 # Shell integrations

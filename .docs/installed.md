@@ -10,5 +10,6 @@ hyprpm enable hyprexpo
 hyprpm add https://github.com/shezdy/hyprsplit
 hyprpm enable hyprsplit
 yay -S fastfetch
+sudo pacman -S yazi ffmpeg p7zip jq poppler fd ripgrep fzf zoxide imagemagick
 
 ```

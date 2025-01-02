@@ -52,6 +52,8 @@
 !.config/wlogout/**
 !.config/yadm/
 !.config/yadm/**
+!.config/yazi/
+!.config/yazi/**
 !.config/zed/
 !.config/zed/**
 !.config/zshrc.d/
