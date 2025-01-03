@@ -2,6 +2,6 @@
 
 [flavor]
 # use = "catppuccin-macchiato"
-use = "tokyo-night"
+# use = "tokyo-night"
 # For Yazi 0.4 and above
 dark = "tokyo-night"

@@ -150,3 +150,5 @@ done
 
 # ----- version manager: nodejs, ...
 . /opt/asdf-vm/asdf.sh
+
+export EDITOR=nvim
