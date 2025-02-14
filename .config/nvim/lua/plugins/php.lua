@@ -5,36 +5,28 @@ return {
     opts = {
       formatters_by_ft = {
         php = {
-          function()
-            -- Define paths to the local executables
-            local pint_path = "./vendor/bin/pint"
-            local php_cs_fixer_path = "./vendor/bin/php-cs-fixer"
+          {
+            cmd = function()
+              local pint_path = "./vendor/bin/pint"
+              local php_cs_fixer_path = "./vendor/bin/php-cs-fixer"
 
-            -- Check if the Pint executable exists
-            ---@diagnostic disable-next-line: undefined-field
-            local pint_stat = vim.loop.fs_stat(pint_path)
-            if pint_stat and pint_stat.type == "file" then
-              -- Use Pint if available
-              return {
-                cmd = { pint_path },
-                stdin = true,
-              }
-            end
+              -- Check if Pint exists
+              ---@diagnostic disable-next-line: undefined-field
+              if vim.loop.fs_stat(pint_path) then
+                return pint_path
+              end
 
-            -- Check if the PHP CS Fixer executable exists
-            ---@diagnostic disable-next-line: undefined-field
-            local fixer_stat = vim.loop.fs_stat(php_cs_fixer_path)
-            if fixer_stat and fixer_stat.type == "file" then
-              -- Use PHP CS Fixer as fallback
-              return {
-                cmd = { php_cs_fixer_path, "fix", "--using-cache=no", "--no-interaction" },
-                stdin = true,
-              }
-            end
+              -- Fallback to PHP CS Fixer if Pint doesn't exist
+              ---@diagnostic disable-next-line: undefined-field
+              if vim.loop.fs_stat(php_cs_fixer_path) then
+                return php_cs_fixer_path
+              end
 
-            -- Return nil if neither formatter is found
-            return nil
-          end,
+              -- No formatter found
+              return nil
+            end,
+            stdin = true,
+          },
         },
       },
     },

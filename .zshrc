@@ -31,7 +31,7 @@ zinit snippet OMZP::command-not-found
 
 # History
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
+HISTSIZE=500000
 SAVEHIST=500000
 HISTDUP=erase
 setopt appendhistory
@@ -68,8 +68,8 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias ls='eza --color=always --icons=always --long --show-symlinks'
-alias ll='ls -a'
-alias la='ls -a'
+alias ll='ls -ag'
+alias la='ls -ag'
 alias tree='ls --tree --level=2'
 alias hostname='uname -n'
 # use `y` instead of yazi
@@ -130,16 +130,20 @@ export BAT_THEME=tokyonight_night
 
 # ---- ssh-agent( using gnome-keyring now, should not start here) 
 # unset SSH_AGENT_PID
-# if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
-#   export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
-# fi
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+fi
 # export GPG_TTY="$(tty)"
 # gpg-connect-agent updatestartuptty /bye >/dev/null
 
 # Start ssh-agent if not running
-if ! pgrep -u "$USER" ssh-agent > /dev/null; then
-    eval "$(ssh-agent -s)"
-fi
+# if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+#     eval "$(ssh-agent -s)"
+# else
+#     # If ssh-agent is already running, set the environment variables
+#     export SSH_AUTH_SOCK
+#     export SSH_AGENT_PID
+# fi
 
 # Add all SSH keys from ~/.ssh directory
 for key in ~/.ssh/id_*; do
@@ -152,3 +156,10 @@ done
 . /opt/asdf-vm/asdf.sh
 
 export EDITOR=nvim
+# export PATH="/home/hoang/.config/herd-lite/bin:$PATH"
+# export PHP_INI_SCAN_DIR="/home/hoang/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/hoang/.lmstudio/bin"
+
+. "$HOME/.local/bin/env"

@@ -20,3 +20,10 @@ vim.api.nvim_create_autocmd("BufWritePost", {
     vim.fn.system("./vendor/bin/pint " .. vim.fn.expand("%:p"))
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "env",
+  callback = function()
+    vim.diagnostic.enable(false)
+  end,
+})

@@ -2,3 +2,6 @@
 [user]
   name = trung.hoang
   email = trung.hoang@bnksolution.com
+
+[core]
+	fileMode = false

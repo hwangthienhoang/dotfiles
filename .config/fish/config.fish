@@ -23,3 +23,6 @@ alias pamcan=pacman
 #   set_color cyan; echo (pwd)
 #   set_color green; echo '> '
 # end
+
+# Added by LM Studio CLI (lms)
+set -gx PATH $PATH /home/hoang/.lmstudio/bin

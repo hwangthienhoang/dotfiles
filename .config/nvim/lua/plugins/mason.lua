@@ -10,5 +10,13 @@ return {
         "intelephense",
       },
     },
+    config = function()
+      require("mason").setup({
+        registries = {
+          "github:mason-org/mason-registry",
+          "github:icefed/mason-registry",
+        },
+      })
+    end,
   },
 }

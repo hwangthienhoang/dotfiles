@@ -11,6 +11,7 @@ return {
               format = {
                 braces = "k&r",
               },
+              stubs = { "all", "*" },
             },
           },
         },

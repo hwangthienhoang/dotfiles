@@ -240,3 +240,8 @@ if [[ $1 != no-repeat-flag && -z $NO_REPETITION ]]; then
 fi
 
 [[ $1 != no-repeat-flag && -f /usr/share/blesh/ble.sh ]] && source /usr/share/blesh/ble.sh
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/hoang/.lmstudio/bin"
+
+. "$HOME/.local/bin/env"

@@ -34,3 +34,6 @@ map("n", "go", "<Cmd>call append(line('.'), repeat([''], v:count1))<CR>", { desc
 
 -- Insert Mode
 map({ "c", "i", "t" }, "<M-BS>", "<C-w>", { desc = "Delete Word" })
+
+map("n", "<leader>cp", ':let @+ = expand("%")<CR>', { desc = "Copy relative path" })
+map("n", "<leader>cP", ':let @+ = expand("%:p")<CR>', { desc = "Copy absolute path" })
